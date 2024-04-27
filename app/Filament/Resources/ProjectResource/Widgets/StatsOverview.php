@@ -24,7 +24,6 @@ class StatsOverview extends BaseWidget
 
         return [
             Stat::make('Projects', $project->count())
-                ->icon('heroicon-O-globe-alt')
                 ->description($groupedProjects[count($groupedProjects) - 1] . ' This Month')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->chart($groupedProjects)
