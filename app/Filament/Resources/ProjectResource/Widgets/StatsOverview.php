@@ -24,14 +24,14 @@ class StatsOverview extends BaseWidget
 
         return [
             Stat::make('Projects', $project->count())
-                ->icon('heroicon-o-list-bullet')
+                ->icon('heroicon-o-globe-alt')
                 ->description($groupedProjects[count($groupedProjects) - 1] . ' This Month')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->chart($groupedProjects)
                 ->color('success'),
 
             Stat::make('Units', $project->sum('units_no'))
-                ->icon('heroicon-o-list-bullet')
+                ->icon('heroicon-o-home-modern')
                 ->description($groupedUnits[count($groupedUnits) - 1] . ' This Month')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->chart($groupedUnits)
