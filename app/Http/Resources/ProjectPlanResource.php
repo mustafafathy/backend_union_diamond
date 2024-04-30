@@ -17,7 +17,7 @@ class ProjectPlanResource extends JsonResource
         return [
             'id' => $this->resource->id,
             'title' => $this->resource->title,
-            'image' => asset('public/' . $this->resource->image),
+            'image' => asset('storage/' . $this->resource->image),
         ];
     }
 }
