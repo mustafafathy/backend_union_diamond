@@ -24,7 +24,7 @@ class ProjectResource extends JsonResource
             'brochure' => $this->when($this->brochure, asset('storage/' . $this->brochure)),
             'is_featured' => $this->when($this->is_featured, $this->is_featured),
             'main_image' => $this->when($this->main_image, asset('storage/' . $this->main_image)),
-            'alt_images' => $this->when($this->alt_images, $this->generateAltImageUrls()),
+            'alt_images' => $this->when($this->alt_images, $this->alt_images ? $this->generateAltImageUrls() : ''),
             'video' => $this->when($this->video, $this->video),
             'latitude' => $this->when($this->latitude, $this->latitude),
             'longitude' => $this->when($this->longitude, $this->longitude),
