@@ -6,6 +6,7 @@ use App\Filament\Resources\ProjectResource\Widgets\StatsOverview;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -40,8 +41,13 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 StatsOverview::class,
-                // Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
+            ])
+            ->navigationItems([
+                NavigationItem::make('Website Data')
+                    ->url('/admin/website-datas/1/edit')
+                    ->icon('heroicon-o-circle-stack')
+                    ->isActiveWhen(fn () => request()->is('admin/website-datas/*/edit'))
+                    ->Sort(4)
             ])
             ->middleware([
                 EncryptCookies::class,

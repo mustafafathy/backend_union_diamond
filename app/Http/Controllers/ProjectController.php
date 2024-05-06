@@ -21,7 +21,6 @@ class ProjectController extends Controller
     public function project($id)
     {
         $project = Project::with('features', 'plans')->findOrFail($id);
-        // dd($project);
         return new ProjectResource($project);
     }
 }

@@ -4,20 +4,17 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\RelationManagers\PlansRelationManager;
+use App\Models\Logo;
 use App\Models\Project;
 use Filament\Forms;
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Livewire\Attributes\Layout;
+use IbrahimBougaoua\RadioButtonImage\Actions\RadioButtonImage;
 
 class ProjectResource extends Resource
 {
@@ -69,6 +66,10 @@ class ProjectResource extends Resource
                     ]),
                 Section::make("Media")
                     ->schema([
+                        RadioButtonImage::make('logo_id')
+                            ->label('Logo')
+                            ->options(Logo::all()->pluck('image', 'id')->toArray())
+                            ,
                         Forms\Components\FileUpload::make('main_image')
                             ->label('Main Image')
                             ->image()
