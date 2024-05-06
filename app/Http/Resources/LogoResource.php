@@ -14,6 +14,9 @@ class LogoResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->resource->id,
+            'image' => asset('storage/' . $this->resource->image),
+        ];
     }
 }

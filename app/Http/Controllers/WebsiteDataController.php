@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LogoCollection;
+use App\Http\Resources\WebsiteDataResource;
+use App\Models\Logo;
 use App\Models\WebsiteData;
 use Illuminate\Http\Request;
 
@@ -12,54 +15,15 @@ class WebsiteDataController extends Controller
      */
     public function index()
     {
-        //
+        return new WebsiteDataResource(WebsiteData::first());
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function logos()
     {
-        //
+        return new LogoCollection(Logo::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(WebsiteData $websiteData)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(WebsiteData $websiteData)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, WebsiteData $websiteData)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(WebsiteData $websiteData)
-    {
-        //
-    }
 }

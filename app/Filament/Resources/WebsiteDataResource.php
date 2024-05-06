@@ -21,6 +21,11 @@ class WebsiteDataResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
+    public static function getNavigationSort(): ?int
+    {
+        return 4;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
