@@ -15,6 +15,7 @@ class Project extends Model
 
     protected $casts = [
         'alt_images' => 'array',
+        'stages_images' => 'array',
     ];
 
     public function features()
@@ -44,6 +45,10 @@ class Project extends Model
                 Storage::disk('public')->delete($altImage);
             }
 
+            foreach ($project->stages_images as $stageImage) {
+                Storage::disk('public')->delete($stageImage);
+            }
+
             $project->plans->each(function ($projectPlan) {
                 Storage::disk('public')->delete($projectPlan->image);
             });
@@ -68,6 +73,17 @@ class Project extends Model
                 $newAltImages = $project->getAttribute('alt_images');
 
                 $imagesToDelete = array_diff($oldAltImages, $newAltImages);
+
+                foreach ($imagesToDelete as $image) {
+                    Storage::disk('public')->delete($image);
+                }
+            }
+
+            if ($project->isDirty('stages_images')) {
+                $oldStagesImages = $project->getOriginal('stages_images');
+                $newStagesImages = $project->getAttribute('stages_images');
+
+                $imagesToDelete = array_diff($oldStagesImages, $newStagesImages);
 
                 foreach ($imagesToDelete as $image) {
                     Storage::disk('public')->delete($image);

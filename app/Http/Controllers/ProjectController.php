@@ -23,4 +23,22 @@ class ProjectController extends Controller
         $project = Project::with('features', 'plans')->findOrFail($id);
         return new ProjectResource($project);
     }
+
+    public function project_images()
+    {
+        $cols = [
+            'id', 'name', 'alt_images', 'logo_id'
+        ];
+
+        return new ProjectCollection(Project::with('logo')->select($cols)->get());
+    }
+
+    public function project_stages()
+    {
+        $cols = [
+            'id', 'name', 'stages_images', 'logo_id'
+        ];
+
+        return new ProjectCollection(Project::with('logo')->select($cols)->get());
+    }
 }

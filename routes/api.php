@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('projects', [ProjectController::class, 'index']);
 Route::get('project/{id}', [ProjectController::class, 'project']);
+Route::get('project_images', [ProjectController::class, 'project_images']);
+Route::get('project_stages', [ProjectController::class, 'project_stages']);
 Route::get('website-data', [WebsiteDataController::class, 'index']);
 Route::get('logos', [WebsiteDataController::class, 'logos']);
 Route::post('contact', [ContactController::class, 'create']);

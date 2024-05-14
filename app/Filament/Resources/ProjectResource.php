@@ -68,8 +68,7 @@ class ProjectResource extends Resource
                     ->schema([
                         RadioButtonImage::make('logo_id')
                             ->label('Logo')
-                            ->options(Logo::all()->pluck('image', 'id')->toArray())
-                            ,
+                            ->options(Logo::all()->pluck('image', 'id')->toArray()),
                         Forms\Components\FileUpload::make('main_image')
                             ->label('Main Image')
                             ->image()
@@ -85,6 +84,13 @@ class ProjectResource extends Resource
                             ->directory('images/alt')
                             ->visibility('public')
                             ->required(),
+                        Forms\Components\FileUpload::make('stages_images')
+                            ->label('Stages Images')
+                            ->image()
+                            ->multiple()
+                            ->acceptedFileTypes(['image/*'])
+                            ->directory('images/stages')
+                            ->visibility('public'),
                         Forms\Components\FileUpload::make('brochure')
                             ->required()
                             ->acceptedFileTypes(['application/pdf'])

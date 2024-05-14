@@ -25,9 +25,13 @@ class ProjectResource extends JsonResource
             'is_featured' => $this->when($this->is_featured, $this->is_featured),
             'main_image' => $this->when($this->main_image, asset('storage/' . $this->main_image)),
             'alt_images' => $this->when($this->alt_images, $this->alt_images ? $this->generateAltImageUrls() : ''),
+            'stages_images' => $this->when($this->stages_images, $this->stages_images ? $this->generateStagesImageUrls() : ''),
             'video' => $this->when($this->video, $this->video),
             'latitude' => $this->when($this->latitude, $this->latitude),
             'longitude' => $this->when($this->longitude, $this->longitude),
+            'logo' => $this->whenLoaded('logo', function () {
+                return asset('storage/' . $this->logo->image);
+            }),
             'plans' => ProjectPlanResource::collection($this->whenLoaded('plans')),
             'features' => FeatureResource::collection($this->whenLoaded('features')),
         ];
@@ -35,10 +39,19 @@ class ProjectResource extends JsonResource
 
     protected function generateAltImageUrls()
     {
-        $altImageUrls = [];
+        $altImagesUrls = [];
         foreach ($this->alt_images as $altImage) {
-            $altImageUrls[] = asset('storage/' . $altImage);
+            $altImagesUrls[] = asset('storage/' . $altImage);
         }
-        return $altImageUrls;
+        return $altImagesUrls;
+    }
+
+    protected function generateStagesImageUrls()
+    {
+        $stagesImagesUrls = [];
+        foreach ($this->stages_images as $stageImage) {
+            $stagesImagesUrls[] = asset('storage/' . $stageImage);
+        }
+        return $stagesImagesUrls;
     }
 }
