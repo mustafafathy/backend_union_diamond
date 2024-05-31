@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\LogoCollection;
 use App\Http\Resources\WebsiteDataResource;
-use App\Models\Logo;
 use App\Models\WebsiteData;
 use Illuminate\Http\Request;
 
@@ -23,7 +22,6 @@ class WebsiteDataController extends Controller
      */
     public function logos()
     {
-        return new LogoCollection(Logo::all());
+        return new WebsiteDataResource(WebsiteData::select('logos')->first());
     }
-
 }

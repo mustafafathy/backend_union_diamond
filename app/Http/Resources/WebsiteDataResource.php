@@ -26,6 +26,16 @@ class WebsiteDataResource extends JsonResource
             'footer_num2' => $this->when($this->footer_num2, $this->footer_num2),
             'latitude' => $this->when($this->latitude, $this->latitude),
             'longitude' => $this->when($this->longitude, $this->longitude),
+            'image' => $this->when($this->logos, $this->logos ? $this->generateLogosUrls() : ''),
         ];
+    }
+
+    protected function generateLogosUrls()
+    {
+        $logosUrls = [];
+        foreach ($this->logos as $logo) {
+            $logosUrls[] = asset('storage/' . $logo);
+        }
+        return $logosUrls;
     }
 }

@@ -64,6 +64,14 @@ class WebsiteDataResource extends Resource
                 Forms\Components\TextInput::make('longitude')
                     ->required()
                     ->numeric(),
+                Forms\Components\FileUpload::make('logos')
+                    ->label('Logos')
+                    ->image()
+                    ->multiple()
+                    ->acceptedFileTypes(['image/*'])
+                    ->directory('images/logos')
+                    ->visibility('public')
+                    ->required(),
             ]);
     }
 
