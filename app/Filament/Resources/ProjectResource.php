@@ -44,6 +44,14 @@ class ProjectResource extends Resource
                             ->columnSpanFull(),
                         Forms\Components\Toggle::make('is_featured')
                             ->required(),
+                        Forms\Components\Select::make('status')
+                            ->required()
+                            ->options([
+                                '1' => 'قريبا',
+                                '2' => 'متاح',
+                                '3' => 'مباع',
+                                '4' => 'لم تحدد',
+                            ]),
                     ])
                     ->columns(2),
                 Section::make('')
