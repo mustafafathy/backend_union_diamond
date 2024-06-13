@@ -53,7 +53,6 @@ class WebsiteDataResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('badge')
-                    ->email()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('footer_num1')
