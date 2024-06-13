@@ -34,6 +34,12 @@ class WebsiteDataController extends Controller
 
     public function slider()
     {
-        return (Slider::orderBy('order')->select('id', 'image')->get());
+        return Slider::orderBy('order')
+            ->select('id', 'image')
+            ->get()
+            ->map(function ($item) {
+                $item->image = asset('storage/' . $item->image);
+                return $item;
+            });
     }
 }
