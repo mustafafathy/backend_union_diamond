@@ -22,7 +22,7 @@ class ContactResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 4;
+        return 5;
     }
 
     public static function form(Form $form): Form

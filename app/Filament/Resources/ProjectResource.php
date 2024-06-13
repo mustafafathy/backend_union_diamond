@@ -47,8 +47,8 @@ class ProjectResource extends Resource
                         Forms\Components\Select::make('status')
                             ->required()
                             ->options([
-                                '1' => 'قريبا',
-                                '2' => 'متاح',
+                                '1' => 'متاح',
+                                '2' => 'قريبا',
                                 '3' => 'مباع',
                                 '4' => 'جاري الإنشاء',
                             ]),
@@ -77,6 +77,13 @@ class ProjectResource extends Resource
                         RadioButtonImage::make('logo_id')
                             ->label('Logo')
                             ->options(Logo::all()->pluck('image', 'id')->toArray()),
+                        Forms\Components\FileUpload::make('page_image')
+                            ->label('Page Image')
+                            ->image()
+                            ->directory('images/main')
+                            ->visibility('public')
+                            ->acceptedFileTypes(['image/*'])
+                            ->required(),
                         Forms\Components\FileUpload::make('main_image')
                             ->label('Main Image')
                             ->image()

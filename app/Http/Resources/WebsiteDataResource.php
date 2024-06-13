@@ -27,6 +27,10 @@ class WebsiteDataResource extends JsonResource
             'latitude' => $this->when($this->latitude, $this->latitude),
             'longitude' => $this->when($this->longitude, $this->longitude),
             'image' => $this->when($this->logos, $this->logos ? $this->generateLogosUrls() : ''),
+            'who_image' => $this->when($this->who_image, asset('storage/' . $this->who_image)),
+            'projects_image' => $this->when($this->projects_image, asset('storage/' . $this->projects_image)),
+            'stages_image' => $this->when($this->stages_image, asset('storage/' . $this->stages_image)),
+
         ];
     }
 

@@ -23,7 +23,7 @@ class WebsiteDataResource extends Resource
 
     public static function getNavigationSort(): ?int
     {
-        return 4;
+        return 5;
     }
 
     public static function form(Form $form): Form
@@ -52,6 +52,10 @@ class WebsiteDataResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('badge')
+                    ->email()
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('footer_num1')
                     ->required()
                     ->maxLength(255),
@@ -71,6 +75,27 @@ class WebsiteDataResource extends Resource
                     ->acceptedFileTypes(['image/*'])
                     ->directory('images/logos')
                     ->visibility('public')
+                    ->required(),
+                Forms\Components\FileUpload::make('who_image')
+                    ->label('Who We are image')
+                    ->image()
+                    ->directory('images/slider')
+                    ->visibility('public')
+                    ->acceptedFileTypes(['image/*'])
+                    ->required(),
+                Forms\Components\FileUpload::make('projects_image')
+                    ->label('Our Projects Image')
+                    ->image()
+                    ->directory('images/slider')
+                    ->visibility('public')
+                    ->acceptedFileTypes(['image/*'])
+                    ->required(),
+                Forms\Components\FileUpload::make('stages_image')
+                    ->label('Stages Image')
+                    ->image()
+                    ->directory('images/slider')
+                    ->visibility('public')
+                    ->acceptedFileTypes(['image/*'])
                     ->required(),
             ]);
     }
