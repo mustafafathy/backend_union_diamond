@@ -29,13 +29,13 @@ class WebsiteDataController extends Controller
 
     public function map_info()
     {
-        return new ProjectCollection(Project::select(['id', 'name', 'longitude', 'latitude', 'status', 'main_image'])->get(), '');
+        return new ProjectCollection(Project::select(['id', 'name', 'longitude', 'latitude', 'status', 'main_image'])->get());
     }
 
     public function slider()
     {
-        return Slider::select('id', 'image')
-            ->orderBy('order')
+        return Slider::orderBy('order')
+            ->select('id', 'image')
             ->get()
             ->map(function ($item) {
                 $item->image = asset('storage/' . $item->image);
