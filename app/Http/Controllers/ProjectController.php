@@ -12,7 +12,7 @@ class ProjectController extends Controller
     public function index()
     {
         $cols = [
-            'id', 'name', 'description', 'type', 'is_featured', 'main_image'
+            'id', 'name', 'description', 'type', 'is_featured', 'main_image', 'badge'
         ];
 
         return new ProjectCollection(Project::select($cols)->paginate());

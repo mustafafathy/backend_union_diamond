@@ -22,6 +22,7 @@ class ProjectResource extends JsonResource
             'area' => $this->when($this->area, $this->area),
             'units_no' => $this->when($this->units_no, $this->units_no),
             'brochure' => $this->when($this->brochure, asset('storage/' . $this->brochure)),
+            'badge' => $this->when($this->badge, $this->badge),
             'is_featured' => $this->when($this->is_featured, $this->is_featured),
             'status' => $this->when($this->status, $this->status),
             'main_image' => $this->when($this->main_image, asset('storage/' . $this->main_image)),

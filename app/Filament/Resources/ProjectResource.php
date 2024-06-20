@@ -42,6 +42,9 @@ class ProjectResource extends Resource
                         Forms\Components\Textarea::make('description')
                             ->required()
                             ->columnSpanFull(),
+                        Forms\Components\TextInput::make('badge')
+                            ->required()
+                            ->maxLength(255),
                         Forms\Components\Toggle::make('is_featured')
                             ->required(),
                         Forms\Components\Select::make('status')
