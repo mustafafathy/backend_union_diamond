@@ -30,6 +30,7 @@ class ProjectResource extends JsonResource
             'alt_images' => $this->when($this->alt_images, $this->alt_images ? $this->generateAltImageUrls() : ''),
             'stages_images' => $this->when($this->stages_images, $this->stages_images ? $this->generateStagesImageUrls() : ''),
             'video' => $this->when($this->video, $this->video),
+            'stages_video' => $this->when($this->stages_video, $this->stages_video),
             'latitude' => $this->when($this->latitude, $this->latitude),
             'longitude' => $this->when($this->longitude, $this->longitude),
             'logo' => $this->whenLoaded('logo', function () {

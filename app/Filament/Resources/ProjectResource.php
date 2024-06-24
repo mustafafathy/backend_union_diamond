@@ -116,6 +116,8 @@ class ProjectResource extends Resource
                         Forms\Components\TextInput::make('video')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('stages_video')
+                            ->maxLength(255),
                     ])->columns(2),
                 Section::make('Location')
                     ->schema([
@@ -192,7 +194,6 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            PlansRelationManager::class,
         ];
     }
 
