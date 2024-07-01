@@ -167,6 +167,9 @@ class ProjectResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_featured')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('order')
+                    ->numeric()
+                    ->sortable(),
                 Tables\columns\TextColumn::make('description')
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\ImageColumn::make('main_image'),
