@@ -55,6 +55,8 @@ class ProjectResource extends Resource
                                 '3' => 'مباع',
                                 '4' => 'جاري الإنشاء',
                             ]),
+                        Forms\Components\TextInput::make('order')
+                            ->numeric(),
                     ])
                     ->columns(2),
                 Section::make('')
