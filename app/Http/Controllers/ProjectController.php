@@ -15,7 +15,7 @@ class ProjectController extends Controller
             'id', 'name', 'description', 'type', 'is_featured', 'main_image', 'badge'
         ];
 
-        return new ProjectCollection(Project::orderBy('order')->select($cols)->paginate());
+        return new ProjectCollection(Project::orderByRaw('ISNULL(`order`), `order` ASC')->select($cols)->paginate());
     }
 
     public function project($id)
@@ -30,7 +30,7 @@ class ProjectController extends Controller
             'id', 'name', 'alt_images', 'logo_id'
         ];
 
-        return new ProjectCollection(Project::orderBy('order')->with('logo')->select($cols)->get());
+        return new ProjectCollection(Project::orderByRaw('ISNULL(`order`), `order` ASC')->with('logo')->select($cols)->get());
     }
 
     public function project_stages()
@@ -39,6 +39,6 @@ class ProjectController extends Controller
             'id', 'name', 'stages_images', 'logo_id'
         ];
 
-        return new ProjectCollection(Project::orderBy('order')->with('logo')->select($cols)->get());
+        return new ProjectCollection(Project::orderByRaw('ISNULL(`order`), `order` ASC')->with('logo')->select($cols)->get());
     }
 }
